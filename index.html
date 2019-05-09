@@ -6,8 +6,24 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	Hello
+	<h1>Tip Calculator</h1>
+	<div>
+		<input type="text" name="total-cost" oninput="setTotalCost()" placeholder="total cost">
+	</div>
 
+	<div>
+		<input type="text" name="percent" oninput="setTip()" placeholder="tip percent">
+	</div>
+
+	<div>
+		<input type="text" name="split-ways" oninput="setSplitWays()" placeholder="number of people">
+	</div>
+
+	<h1 id="total-cost"></h1>
+	<h1 id="tip-percent"></h1>
+	<h1 id="total-tip"></h1>
+	<h1 id="split-ways"></h1>
+	<h2 id="split-tip"></h2>
 <script src="index.js"></script>
 </body>
 </html>
