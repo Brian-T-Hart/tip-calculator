@@ -1,0 +1,108 @@
+body, html {
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	width: 100vw;
+}
+
+body {
+	background-image: url('https://images.pexels.com/photos/247671/pexels-photo-247671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h4 {
+	margin: 10px 0;
+}
+
+input {
+	border: 5px solid #fff;
+	border-radius: 30px;
+	font-size: 16px;
+	height: 25px;
+    margin: 10px 0;
+    padding: 5px 15px;
+	width: 180px;
+}
+
+input:focus {
+	border: 5px solid deepskyblue;
+	border-radius: 30px;
+	outline: none;
+}
+
+.card {
+	background: #fff;
+	border-radius: 10px;
+	margin: auto;
+	max-width: 280px;
+	min-height: 200px;
+	width: 80%;
+}
+
+.circle {
+	background: #fff;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	height: 50px;
+	margin: 10px;
+	width: 50px;
+}
+
+.circle.focused {
+	border: 5px solid deepskyblue;
+}
+
+.d-flex {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.fw-200 {
+	font-weight: 200;
+}
+
+.fw-600 {
+	font-weight: 600;
+}
+
+.hidden {
+	display: none;
+}
+
+.mb-2 {
+	margin-bottom: 20px;
+}
+
+.mt-2 {
+	margin-top: 20px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.title {
+	border: 2px solid #fff;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 42px;
+	padding: 10px;
+}
+
+#main-container {
+	height: 100vh;
+	overflow: auto;
+	width: 100vw;
+}
+
+#split-it {
+	color: #fff;
+	letter-spacing: 1.5px;
+}
