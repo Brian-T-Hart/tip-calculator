@@ -12,6 +12,27 @@ var splitWaysInput = document.getElementById('split-ways-input');
 var costElement = document.getElementById('total-cost');
 var percentElement = document.getElementById('tip-percent');
 
+function validateInput(input, type) {
+	var regex;
+	var valid;
+	if (type === 'float') {
+		regex = /^[0-9]\d*(?:\.\d{0,2})?$/;
+		valid = regex.test(input);
+	}
+	if (type === 'integer') {
+		regex = /^\d+$/;
+		valid = regex.test(input);
+	}
+	
+	if (input.length === 0) {
+		valid = true;
+	}
+	if (input.length > 15) {
+		valid = false;
+	}
+	return valid;
+}
+
 function calculateTip(cost, percent) {
 	if (cost >= 0 && percent >= 0) {
 		totalTip = parseFloat(Math.round(cost * percent) / 100).toFixed(2);
@@ -32,38 +53,57 @@ function calculateSplitTip(tipTotal, numOfPeople) {
 
 function setTotalCost() {
 	let element = event.target;
-	totalCost = parseFloat(element.value).toFixed(2);
-	if (totalCost >= 0) {
-		costElement.textContent = "Bill: $" + totalCost;
-	} else {
-		costElement.textContent = "";
-	}
+	let validated = validateInput(element.value, 'float');
+	if (validated) {
+		element.classList.contains('error') ? element.classList.remove('error') : null;
+		totalCost = parseFloat(element.value).toFixed(2);
+		if (totalCost >= 0) {
+			costElement.textContent = "Bill: $" + totalCost;
+		} else {
+			costElement.textContent = "";
+		}
 
-	calculateTip(totalCost, tipPercent);
-	calculateSplitTip(totalTip, splitWays);
+		calculateTip(totalCost, tipPercent);
+		calculateSplitTip(totalTip, splitWays);
+	} else {
+		element.classList.add('error');
+	}
 }
 
 function setTip(tip) {
 	let element = event.target;
-	if (tip) {
-		tipPercent = tip;
-	} else {
-		tipPercent = parseInt(element.value);
-	}
+		if (tip) {
+			tipPercent = tip;
+		} else {
+			let validated = validateInput(element.value, 'integer');
+			if (validated) {
+				element.classList.contains('error') ? element.classList.remove('error') : null;
+				tipPercent = parseInt(element.value);
+			} else {
+				element.classList.add('error');
+			}
+		}
 
-	if (tipPercent >= 0) {
-		percentElement.textContent = "@ " + tipPercent + "%";
-	} else {
-		percentElement.textContent = "";
-	}
-	
-	calculateTip(totalCost, tipPercent);
-	calculateSplitTip(totalTip, splitWays);
+		if (tipPercent >= 0) {
+			percentElement.textContent = "@ " + tipPercent + "%";
+		} else {
+			percentElement.textContent = "";
+		}
+		
+		calculateTip(totalCost, tipPercent);
+		calculateSplitTip(totalTip, splitWays);
 }
 
 function setSplitWays() {
-	splitWays = parseInt(event.target.value);
-	calculateSplitTip(totalTip, splitWays);
+	let element = event.target;
+	let validated = validateInput(element.value, 'integer');
+	if (validated) {
+		element.classList.contains('error') ? element.classList.remove('error') : null;
+		splitWays = parseInt(event.target.value);
+		calculateSplitTip(totalTip, splitWays);
+	} else {
+		element.classList.add('error');
+	}
 }
 
 function toggleElement(el) {

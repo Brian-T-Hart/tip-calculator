@@ -32,6 +32,10 @@ input:focus {
 	outline: none;
 }
 
+input:focus.error {
+	border: 5px solid red;
+}
+
 .card {
 	background: #fff;
 	border-radius: 10px;
