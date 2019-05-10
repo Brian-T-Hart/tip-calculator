@@ -6,24 +6,46 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Tip Calculator</h1>
-	<div>
-		<input type="text" name="total-cost" oninput="setTotalCost()" placeholder="total cost">
+	<div id="main-container">
+		<div class="d-flex">
+			<h1 class="title">Tip Calculator</h1>
+		</div>
+		
+		<div class="d-flex">
+			<div class="d-flex flex-column">
+				<div>
+					<input type="text" name="total-cost" oninput="setTotalCost()" placeholder="total cost">
+				</div>
+
+				<div class="d-flex mb-2 mt-2">
+					<div class="circle d-flex pointer" onclick="handleDefaultTip(10)">10%</div>
+					<div class="circle d-flex pointer" onclick="handleDefaultTip(15)">15%</div>
+					<div class="circle d-flex pointer" onclick="handleDefaultTip(20)">20%</div>
+					<div class="circle d-flex pointer" onclick="handleOther('tip-input-container')">other</div>
+				</div>
+			
+				<div class="hidden" id="tip-input-container">
+					<input type="text" name="percent" id="tip-input" oninput="setTip()" placeholder="tip percent">
+				</div>
+
+				<div class="d-flex" id="split-it">
+					<h3 class="fw-200 pointer" onclick="toggleElement('split-ways-container')">Split It</h3>
+				</div>
+			
+				<div class="hidden" id="split-ways-container">
+					<input type="text" name="split-ways" oninput="setSplitWays()" placeholder="number of people">
+				</div>
+			</div>
+		</div>
+		
+		<div class="card d-flex flex-column mb-2 mt-2">
+			<h4 id="total-cost"></h4>
+			<h4 id="tip-percent"></h4>
+			<h4 id="total-tip"></h4>
+			<h4 id="split-tip"></h4>
+		</div>
 	</div>
 
-	<div>
-		<input type="text" name="percent" oninput="setTip()" placeholder="tip percent">
-	</div>
-
-	<div>
-		<input type="text" name="split-ways" oninput="setSplitWays()" placeholder="number of people">
-	</div>
-
-	<h1 id="total-cost"></h1>
-	<h1 id="tip-percent"></h1>
-	<h1 id="total-tip"></h1>
-	<h1 id="split-ways"></h1>
-	<h2 id="split-tip"></h2>
 <script src="index.js"></script>
 </body>
 </html>
