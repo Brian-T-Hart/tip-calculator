@@ -7,13 +7,15 @@ var tipElement = document.getElementById('total-tip');
 var tipInput = document.getElementById('tip-input');
 var tipInputContainer = document.getElementById('tip-input-container');
 var splitTipElement = document.getElementById('split-tip');
+var splitWaysContainer = document.getElementById('split-ways-container');
+var splitWaysInput = document.getElementById('split-ways-input');
 var costElement = document.getElementById('total-cost');
 var percentElement = document.getElementById('tip-percent');
 
 function calculateTip(cost, percent) {
 	if (cost >= 0 && percent >= 0) {
 		totalTip = parseFloat(Math.round(cost * percent) / 100).toFixed(2);
-		tipElement.textContent = "Total Tip: $" + totalTip;
+		tipElement.textContent = "$" + totalTip;
 	} else {
 		tipElement.textContent = "";
 	}
@@ -22,16 +24,17 @@ function calculateTip(cost, percent) {
 function calculateSplitTip(tipTotal, numOfPeople) {
 	if (numOfPeople > 1 && totalCost > 0 && tipPercent > 0) {
 		splitTip = parseFloat(Math.ceil(tipTotal * 100 / numOfPeople) / 100).toFixed(2);
-		splitTipElement.textContent = "Split " + numOfPeople + " ways: $" + splitTip + " per person";
+		splitTipElement.textContent = "$" + splitTip + " each";
 	} else {
 		splitTipElement.textContent = "";
 	}
 }
 
 function setTotalCost() {
-	totalCost = parseFloat(event.target.value).toFixed(2);
+	let element = event.target;
+	totalCost = parseFloat(element.value).toFixed(2);
 	if (totalCost >= 0) {
-		costElement.textContent = "Total Cost: $" + totalCost;
+		costElement.textContent = "Bill: $" + totalCost;
 	} else {
 		costElement.textContent = "";
 	}
@@ -49,7 +52,7 @@ function setTip(tip) {
 	}
 
 	if (tipPercent >= 0) {
-		percentElement.textContent = "Tip Percent: " + tipPercent + "%";
+		percentElement.textContent = "@ " + tipPercent + "%";
 	} else {
 		percentElement.textContent = "";
 	}
@@ -88,10 +91,17 @@ function handleDefaultTip(tip) {
 	}
 }
 
-function handleOther() {
+function handleOtherTip() {
 	let element = event.target;
 	handleCircleBorder(element);
 	if (tipInputContainer.classList.contains('hidden')) {
 		toggleElement(tipInputContainer.id);
+	}
+}
+
+function handleSplitIt() {
+	toggleElement(splitWaysContainer.id);
+	if (!splitWaysContainer.classList.contains('hidden')) {
+		splitWaysInput.focus();
 	}
 }

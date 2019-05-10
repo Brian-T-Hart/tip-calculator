@@ -21,7 +21,7 @@
 					<div class="circle d-flex pointer" onclick="handleDefaultTip(10)">10%</div>
 					<div class="circle d-flex pointer" onclick="handleDefaultTip(15)">15%</div>
 					<div class="circle d-flex pointer" onclick="handleDefaultTip(20)">20%</div>
-					<div class="circle d-flex pointer" onclick="handleOther('tip-input-container')">other</div>
+					<div class="circle d-flex pointer" onclick="handleOtherTip('tip-input-container')">other</div>
 				</div>
 			
 				<div class="hidden" id="tip-input-container">
@@ -29,11 +29,11 @@
 				</div>
 
 				<div class="d-flex" id="split-it">
-					<h3 class="fw-200 pointer" onclick="toggleElement('split-ways-container')">Split It</h3>
+					<h3 class="fw-200 pointer" onclick="handleSplitIt()">Split It</h3>
 				</div>
 			
 				<div class="hidden" id="split-ways-container">
-					<input type="text" name="split-ways" oninput="setSplitWays()" placeholder="number of people">
+					<input type="text" id="split-ways-input" name="split-ways" oninput="setSplitWays()" placeholder="number of people">
 				</div>
 			</div>
 		</div>
@@ -41,8 +41,8 @@
 		<div class="card d-flex flex-column mb-2 mt-2">
 			<h4 id="total-cost"></h4>
 			<h4 id="tip-percent"></h4>
-			<h4 id="total-tip"></h4>
-			<h4 id="split-tip"></h4>
+			<h2 class="text-blue" id="total-tip"></h2>
+			<h2 class="text-blue" id="split-tip"></h2>
 		</div>
 	</div>
 
