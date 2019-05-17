@@ -68,6 +68,7 @@ function handleOtherTip() {
 	handleCircleBorder(element);
 	if (tipInputContainer.classList.contains('hidden')) {
 		toggleElement(tipInputContainer.id);
+		tipInput.focus();
 	}
 }
 
