@@ -143,6 +143,7 @@ input:focus.error {
 
 @media only screen and (max-width: 567.9px) {
 	.bg-dark {
+		background: rgba(0, 0, 0, 0.8);
 		max-width: 100vw;
 		width: 100vw;
 	}
